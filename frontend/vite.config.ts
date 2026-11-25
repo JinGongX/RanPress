@@ -7,13 +7,13 @@ import os from 'node:os'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  server: {
-    host: "127.0.0.1",
-    port: Number(process.env.WAILS_VITE_PORT) || 9245,
-    strictPort: true,
-  },
-  plugins: [vue(), wails("./bindings"),localUploads(),
-  ],
+    server: {
+        host: "127.0.0.1",
+        port: Number(process.env.WAILS_VITE_PORT) || 9245,
+        strictPort: true,
+    },
+    plugins: [vue(), wails("./bindings"), localUploads(),
+    ],
 });
 
 function localUploads() {
@@ -21,10 +21,12 @@ function localUploads() {
         name: 'local-uploads',
 
         configureServer(server: any) {
-            const uploadDir = path.join(
-                os.homedir(),
-                'Library',
-                'Application Support',
+            const base = process.platform === 'win32'
+                ? (process.env.APPDATA || path.join(os.homedir(), 'AppData', 'Roaming'))
+                : process.platform === 'darwin'
+                    ? path.join(os.homedir(), 'Library', 'Application Support')
+                    : (process.env.XDG_CONFIG_HOME || path.join(os.homedir(), '.config'))
+            const uploadDir = path.join(base,
                 'RanPress',
                 'uploads'
             )
