@@ -1,0 +1,25 @@
+import { createApp } from 'vue'
+import Antd from 'ant-design-vue';//add
+import App from './App.vue'
+import './styles/global.css'
+import './style.css' 
+import 'ant-design-vue/dist/reset.css';
+import {i18n,setupI18n } from './utils/i18n.js'
+import { initTheme } from './utils/ThemeManager.js'//add
+import router from './router/index'
+import {GetLanguage} from  '../bindings/changeme/internal/services/appconfigservice.js'
+
+
+initTheme()
+if (window.location.hash === '' || window.location.hash === '#/') {
+  router.replace('/second')
+}
+async function bootstrap(){
+    await setupI18n('zh')//默认语言或从后端读取
+    createApp(App).use(Antd).use(router).use(i18n).mount('#app')
+    router.isReady().then(async () => {
+        const lang = await GetLanguage() //从后端读取语言设置 lang as any|| 'zh'
+        await setupI18n(lang as any|| 'zh')
+    })
+}
+bootstrap()

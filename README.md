@@ -1,53 +1,174 @@
 # RanPress
 
-Beautiful WeChat Articles, Powered by Markdown.
+<p align="center">
+  <strong>Markdown to WeChat Official Account Formatter</strong>
+</p>
 
-RanPress is a browser-based Markdown editor focused on polished WeChat Official Account article formatting.
+<p align="center">
+  一款基于 Wails 3 + Go 开发的 Markdown 微信公众号排版工具。
+  <br />
+  专注于提升 Markdown 写作与微信公众号内容排版效率。
+</p>
 
-## Features
+<p align="center">
+  <a href="https://github.com/JinGongX/RanPress">GitHub</a>
+  ·
+  <a href="https://github.com/JinGongX/RanPress/releases">下载体验</a>
+  ·
+  <a href="https://github.com/JinGongX/RanPress/issues">问题反馈</a>
+</p>
 
-- Vue 3 + TypeScript + Vite
-- Live Markdown preview and six article themes
-- WeChat-friendly HTML export with inline styles
-- Independent macOS / GitHub / VS Code code block styles
-- Callout blocks: TIP, WARNING, SUCCESS, INFO
-- Local draft persistence and Markdown import/export
+---
 
-## Callout syntax
+## ✨ 为什么选择 RanPress？
 
-```markdown
-> [!TIP] 微信公众号对 HTML 和 CSS 的支持存在限制，最终效果以公众号后台实际粘贴结果为准。
+写 Markdown 很舒服，但将文章发布到微信公众号，往往还需要处理格式、代码块、图片、引用等问题。
 
-> [!WARNING]
-> 发布前请检查图片和代码块在手机端的显示效果。
-```
+RanPress 希望让这个过程变得简单：
 
-Both a same-line message after the marker and a following quoted paragraph are supported.
+- 专注 Markdown 写作，无需反复调整排版。
+- 丰富的主题样式，让文章拥有更好的阅读体验。
+- 一键复制排版后的内容，直接粘贴到微信公众号编辑器。
+- 本地图片管理，让图片处理更加方便。
 
-## Development
+**Write in Markdown, Publish to WeChat.**
+
+## 📸 项目截图
+
+
+<p align="center">
+  <img src="docs/images/preview.png" width="90%" alt="RanPress Preview" />
+</p>
+
+## 🚀 核心功能
+
+### 📝 Markdown 编辑
+
+- 支持常用 Markdown 语法。
+- 实时预览编辑效果。
+- 编辑与预览相结合，提升写作效率。
+- 支持本地图片管理与使用。
+
+### 🎨 微信公众号排版
+
+- 多种文章主题样式。
+- 一键转换为微信公众号兼容 HTML。
+- 支持标题、段落、列表、引用等常见内容样式。
+- 支持提示块与重点内容展示。
+- 让 Markdown 内容快速拥有专业的排版效果。
+
+### 💻 代码块美化
+
+面向技术文章提供更好的代码阅读体验：
+
+- 支持多种代码块主题。
+- 支持 macOS 风格代码窗口。
+- 支持 GitHub 风格代码块。
+- 支持 VS Code 风格代码块。
+
+### 🖼 图片管理
+
+- 支持本地图片上传。
+- 支持在 Markdown 文档中插入图片。
+- 支持图片预览。
+- 方便管理文章中的图片资源。
+
+### 👀 多模式预览
+
+- 实时查看 Markdown 渲染效果。
+- 支持移动端阅读效果预览。
+- 支持宽屏预览。
+- 所见即所得，减少反复调整。
+
+### ⚡ 便捷体验
+
+- 一键复制排版后的 HTML。
+- 支持应用内检查更新。
+- 本地桌面应用，无需依赖在线编辑器。
+- 轻量、简洁，专注内容创作。
+
+## 🛠 技术栈
+
+| 技术 | 说明 |
+|---|---|
+| [Wails 3](https://wails.io/) | 桌面应用框架 |
+| [Go](https://go.dev/) | 后端开发语言 |
+| [Vue 3](https://vuejs.org/) | 前端框架 |
+| [TypeScript](https://www.typescriptlang.org/) | 类型支持 |
+| [Tailwind CSS](https://tailwindcss.com/) | UI 样式框架 |
+| [Vite](https://vite.dev/) | 前端构建工具 |
+
+## 📦 下载与安装
+
+前往 GitHub Releases 页面下载最新版本：
+
+**[Download RanPress](https://github.com/JinGongX/RanPress/releases)**
+
+根据你的操作系统选择对应安装包。
+
+## 💻 本地开发
+
+### 环境要求
+
+- Go
+- Node.js
+- Wails 3
+
+### 克隆项目
 
 ```bash
+//直接拉模版即可
+wails3 init -n RanPress -t https://github.com/JinGongX/RanPress
+
+cd RanPress
+```
+
+### 安装前端依赖
+
+```bash
+cd frontend
+
 npm install
-npm run dev
 ```
 
-## Production build
+### 启动开发环境
+
+根据项目配置使用 Wails 3 启动开发模式：
 
 ```bash
-npm run build
+wails3 dev
 ```
 
-## Notes
+### 构建应用
 
-The WeChat editor may normalize pasted HTML differently across editor versions and clients. Always verify the final pasted result in the Official Account backend before publishing.
+```bash
+wails3 build
+```
 
+## 🗺 Roadmap
 
-## v0.4.0 修复说明
+- [x] Markdown 编辑与实时预览
+- [x] 微信公众号 HTML 排版
+- [x] 多种文章主题
+- [x] 代码块样式美化
+- [x] 本地图片管理
+- [x] 移动端与宽屏预览
+- [x] 应用内检查更新
+- [ ] 更多排版主题
+- [ ] 更多编辑体验优化
 
-- 提示框在 Markdown 源码预处理阶段识别，不再依赖 Marked blockquote renderer 的 HTML 字符串格式。
-- 预览区使用独立的 `.rp-callout` 组件样式。
-- 微信导出时将提示框转换为表格 + 内联样式。
-- 剪贴板 `text/plain` 改为渲染后的纯文本，不再写入原始 Markdown，降低公众号提示检测到 Markdown 语法的概率。
-- macOS 代码栏改为固定双列结构，圆点和语言标签分开布局。
+## 🤝 参与贡献
 
-注意：当前执行环境无法完成 npm 依赖安装，因此未能运行 `npm run build`，也无法替代真实公众号后台的粘贴验证。
+欢迎提交 Issue 和 Pull Request，一起完善 RanPress。
+
+如果你在使用过程中遇到问题，或者有新的功能建议，欢迎在 [Issues](https://github.com/JinGongX/RanPress/issues) 中反馈。
+
+## ⭐ Star
+
+如果 RanPress 对你的写作和公众号排版有所帮助，欢迎给项目点一个 Star！
+
+你的支持是持续迭代的动力。
+
+## 📄 License
+
+本项目采用 MIT License，具体以仓库中的 LICENSE 文件为准。
